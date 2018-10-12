@@ -14,10 +14,9 @@ import java.util.*;
  */
 public class Divisor {
     //Comprobar la división entre 0
-    public int Dividir(int operando1, int operando2) throws ExcepcionDividirPorCero{
-        int resultado;
+    public int Dividir(int operando1, int operando2){
         
-        return resultado = operando1/operando2;
+        return operando1/operando2;
         
     }
 }

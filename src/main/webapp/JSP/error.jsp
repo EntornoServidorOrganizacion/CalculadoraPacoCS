@@ -12,6 +12,7 @@
         
     </head>
     <body>
-        
+        <p><%=request.getAttribute("error")%></p>
+        <a href="<%=request.getContextPath()%>">Menú</a>
     </body>
 </html>

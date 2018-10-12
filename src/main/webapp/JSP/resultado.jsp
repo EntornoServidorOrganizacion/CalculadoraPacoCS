@@ -12,6 +12,6 @@
         
     </head>
     <body>
-        
+        <p><%=request.getAttribute("resultado")%></p>
     </body>
 </html>

@@ -43,35 +43,15 @@ public class Controlador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        Multiplicador mul = new Multiplicador();
+        /*Multiplicador mul = new Multiplicador();
         Divisor div = new Divisor();
         Sumador sum = new Sumador();
         Restador res = new Restador();
         String operador = request.getParameter("operacion");
         int ope1 = Integer.parseInt(request.getParameter("operando1"));
-        int ope2 = Integer.parseInt(request.getParameter("operando2"));
+        int ope2 = Integer.parseInt(request.getParameter("operando2"));*/
 
-        if (request.getParameter("operación") != null) {
-            switch (operador) {
-                case "Sumar":
-                    sum.Sumar(ope1, ope2);
-                    break;
-                case "Restar":
-                    res.Restar(ope1, ope2);
-                    break;
-                case "Multiplicar":
-                    mul.Multiplicar(ope1, ope2);
-                    break;
-                case "Dividir":
-                    try {
-                        div.Dividir(ope1, ope2);
-                    } catch (ExcepcionDividirPorCero e) {
-                        //poner error
-                    }
-
-                    break;
-            }
-        }
+            
 
     }
 
@@ -92,8 +72,10 @@ public class Controlador extends HttpServlet {
          * error diciendo que estamos intentando acceder sin pasar por el
          * formulario de entrada y un enlace pa volver a la calculadora
          */
-        url = request.getContextPath()+"/index.jsp";
-        response.sendRedirect(url);
+        url = "JSP/error.jsp";
+        request.setAttribute("error", "Estás intentando acceder de forma errónea a la calculadora, por favor vuelva al menú principal");
+        request.getRequestDispatcher(url).forward(request,response);
+        
     }
 
     /**
@@ -108,6 +90,8 @@ public class Controlador extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        //aquí van el error si intentamos acceder al controlador directamente
+        //boton redirigir al index
     }
 
     /**

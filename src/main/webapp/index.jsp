@@ -14,8 +14,8 @@
         <title>CALCULADORA</title>
     </head>
     <body>
-        <img id="calculatorIMG" src="IMAGE/CalculatorIMG.png">
-        
+        <%@ include file = "INC/imagenLateral.jsp" %>
+
         <form action="" method="post" class="right">
             <h1>CALCULATOR</h1>
             
@@ -31,8 +31,13 @@
                 Dividir<input name="operacion" value="Dividir" type="radio">
                 <br/>
                 <br/>
-                <button type="submit" name="calcular" value="calcular">Calcular</button>
-                <button type="reset" name="Limpiar" value="Limpiar">Limpiar</button>
+                <%@ include file = "JSP/error.jsp" %>
+                <%@ include file = "JSP/resultado.jsp" %>
+                <br/>
+                <br/>
+                <button type="submit" name="calcular" value="calcular"><span>Calcular</span></button>
+                <button type="reset" name="Limpiar" value="Limpiar"><span>Limpiar</span></button>
+                
                 
             </fieldset>
             
