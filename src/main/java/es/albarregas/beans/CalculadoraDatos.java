@@ -5,6 +5,7 @@
  */
 package es.albarregas.beans;
 
+import es.albarregas.exceptions.ExcepcionDividirPorCero;
 import java.io.Serializable;
 
 /**
@@ -55,7 +56,10 @@ public class CalculadoraDatos implements Serializable{
     /**
      * @param resultado the resultado to set
      */
-    public void setResultado(int resultado) {
+    public void setResultado(int resultado) throws ExcepcionDividirPorCero{
+        if(getSignoOperacion() == "/" && getOperando2() == 0){
+            throw new ExcepcionDividirPorCero("No puedes dividir entre 0");
+        }
         this.resultado = resultado;
     }
 

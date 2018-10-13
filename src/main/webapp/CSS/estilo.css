@@ -39,14 +39,24 @@ fieldset{
     margin: auto;
 }
 
-label, input{
-    margin: 1%;
-    display: inline-block;
+#introDatos{
+    margin-bottom: 10%;
 }
 
-label{
-    width: 200px;
+#introDatos label{
+    display: block;
+    margin: .5em 0 0 0;
 }
+
+input:focus {
+  border: 6px solid #B5FF0A;
+  background: #D5E0E3;
+}
+
+#entrada{
+    text-align: right;
+}
+
 
 #calculatorIMG{
     width: 30%;
@@ -92,4 +102,13 @@ button:hover span {
 button:hover span:after {
   opacity: 1;
   right: 0;
+}
+
+#operandos{
+    margin-right: 3%;
+}
+
+#firulais{
+    color: white;
+    font-size: 140px;
 }

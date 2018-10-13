@@ -14,25 +14,21 @@
         <title>CALCULADORA</title>
     </head>
     <body>
-        <%@ include file = "INC/imagenLateral.jsp" %>
+        <%@ include file = "../INC/imagenLateral.jsp" %>
 
-        <form action="" method="post" class="right">
+        <form action="Controlador" method="post" class="right">
             <h1>CALCULATOR</h1>
             
             <fieldset>
+                <div id="introDatos">
+                <label>Primer operando:</label><input id="entrada" type="text" name="operando1"/><br/>
+                <label>Segundo operando:</label><input id="entrada" type="text" name="operando2"/>
+                </div>
                 
-                <label>Primer operando:</label><input type="number" name="operando1"/><br/>
-                <label>Segundo operando:</label><input type="number" name="operando2"/>
-                <br/>
-                <br/>
-                Sumar<input name="operacion" value="Sumar" type="radio" checked="checked">  
-                Restar<input name="operacion" value="Restar" type="radio">  
-                Multiplicar<input name="operacion" value="Multiplicar" type="radio">    
-                Dividir<input name="operacion" value="Dividir" type="radio">
-                <br/>
-                <br/>
-                <%@ include file = "JSP/error.jsp" %>
-                <%@ include file = "JSP/resultado.jsp" %>
+                Sumar<input id="operandos" name="operacion" value="Sumar" type="radio" checked="checked">  
+                Restar<input id="operandos" name="operacion" value="Restar" type="radio">  
+                Multiplicar<input id="operandos" name="operacion" value="Multiplicar" type="radio">    
+                Dividir<input id="operandos" name="operacion" value="Dividir" type="radio">
                 <br/>
                 <br/>
                 <button type="submit" name="calcular" value="calcular"><span>Calcular</span></button>

@@ -26,10 +26,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Controlador", urlPatterns = {"/Controlador"})
 public class Controlador extends HttpServlet {
 
-    CalculadoraDatos cal = new CalculadoraDatos();
-
-    String url;
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -41,17 +37,6 @@ public class Controlador extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
-        /*Multiplicador mul = new Multiplicador();
-        Divisor div = new Divisor();
-        Sumador sum = new Sumador();
-        Restador res = new Restador();
-        String operador = request.getParameter("operacion");
-        int ope1 = Integer.parseInt(request.getParameter("operando1"));
-        int ope2 = Integer.parseInt(request.getParameter("operando2"));*/
-
-            
 
     }
 
@@ -67,15 +52,14 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
         /**
-         * error diciendo que estamos intentando acceder sin pasar por el
-         * formulario de entrada y un enlace pa volver a la calculadora
+         * Error diciendo que estamos intentando acceder sin pasar por el
+         * formulario de entrada. Añadir enlace en el archivo de error.jsp
          */
-        url = "JSP/error.jsp";
         request.setAttribute("error", "Estás intentando acceder de forma errónea a la calculadora, por favor vuelva al menú principal");
-        request.getRequestDispatcher(url).forward(request,response);
-        
+        request.getRequestDispatcher("JSP/error.jsp").forward(request, response);
+
     }
 
     /**
@@ -90,8 +74,53 @@ public class Controlador extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        //aquí van el error si intentamos acceder al controlador directamente
-        //boton redirigir al index
+
+        CalculadoraDatos cal = new CalculadoraDatos();//instanciada la clase CalculadoraDatos
+
+        String url;
+
+        //instanciadas las clases correspondientes a los métodos de las operaciones
+        Multiplicador mul = new Multiplicador();
+        Divisor div = new Divisor();
+        Sumador sum = new Sumador();
+        Restador res = new Restador();
+
+        //obtener valores de los operandos, vienen como String y hay que pasarlos a integer o double si así estubieran definidos
+        int ope1 = Integer.parseInt(request.getParameter("operando1"));
+        int ope2 = Integer.parseInt(request.getParameter("operando2"));
+        cal.setOperando1(ope1);
+        cal.setOperando2(ope2);
+
+        try {
+            if (request.getParameter("operacion") != null) {
+                if (request.getParameter("operacion").equals("Sumar")) {
+                    cal.setResultado(sum.Sumar(ope1, ope2));
+                    cal.setSignoOperacion("+");
+                } else if (request.getParameter("operacion").equals("Restar")) {
+                    cal.setResultado(res.Restar(ope1, ope2));
+                    cal.setSignoOperacion("-");
+                } else if (request.getParameter("operacion").equals("Multiplicar")) {
+                    cal.setResultado(mul.Multiplicar(ope1, ope2));
+                    cal.setSignoOperacion("*");
+                } else if (request.getParameter("operacion").equals("Dividir")) {
+                    cal.setSignoOperacion("/");
+
+                }
+            }
+
+            request.setAttribute("resultado", cal);
+            url = "JSP/resultado.jsp";
+
+        } catch (NumberFormatException ex) {
+            url = "JSP/error.jsp";
+            request.setAttribute("error", "Debes introducir valores numéricos");
+        } catch (ExcepcionDividirPorCero ex) {
+            url = "JSP/error.jsp";
+            request.setAttribute("error", ex.toString());
+        }
+        
+        request.getRequestDispatcher(url).forward(request,response);
+
     }
 
     /**
