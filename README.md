@@ -11,3 +11,6 @@ Lo que que debe hacer el proyecto es: al introducir a través de dos inputs un v
 *Commit 14/10/2018 (mediodía) Falta el error de dividir entre 0.
 
 *Commit 14/10/2018 a las 23:28 horas. Sigue faltando el error de dividir entre 0. Se han hecho cambios en la forma de mostrar el resultado, en los commits anteriores  aparecía el resultado sin sacar los datos de la operación, es decir, sin escribir los operandos y el signo de la operación, ahora sale el mensaje "El resultado de 3 + 2 es:".
+
+
+*Commit 14/10/2018 a las 23:42 horas. Ya sale el error de dividir entre 0, pero no es tratado con la excepción correspondiente, si con la excepción ArithmeticException.
