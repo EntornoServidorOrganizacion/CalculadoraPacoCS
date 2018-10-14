@@ -118,6 +118,9 @@ public class Controlador extends HttpServlet {
         } catch (ExcepcionDividirPorCero ex) {
             url = "JSP/error.jsp";
             request.setAttribute("error", ex.toString());
+        } catch (ArithmeticException ex){
+            url = "JSP/error.jsp";
+            request.setAttribute("error", "No se puede dividir entre 0");
         }
         
         request.getRequestDispatcher(url).forward(request,response);
