@@ -21,8 +21,8 @@
             
             <fieldset>
                 <div id="introDatos">
-                <label>Primer operando:</label><input id="entrada" type="text" name="operando1"/><br/>
-                <label>Segundo operando:</label><input id="entrada" type="text" name="operando2"/>
+                <label>Primer operando:</label><input id="entrada" type="number" name="operando1"/><br/>
+                <label>Segundo operando:</label><input id="entrada" type="number" name="operando2"/>
                 </div>
                 
                 Sumar<input id="operandos" name="operacion" value="Sumar" type="radio" checked="checked">  

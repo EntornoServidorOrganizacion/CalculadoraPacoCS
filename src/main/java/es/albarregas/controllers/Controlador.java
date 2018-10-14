@@ -103,6 +103,7 @@ public class Controlador extends HttpServlet {
                     cal.setResultado(mul.Multiplicar(ope1, ope2));
                     cal.setSignoOperacion("*");
                 } else if (request.getParameter("operacion").equals("Dividir")) {
+                    cal.setResultado(div.Dividir(ope1, ope2));
                     cal.setSignoOperacion("/");
 
                 }
@@ -111,9 +112,9 @@ public class Controlador extends HttpServlet {
             request.setAttribute("resultado", cal);
             url = "JSP/resultado.jsp";
 
-        } catch (NumberFormatException ex) {
+        /*} catch (NumberFormatException ex) {
             url = "JSP/error.jsp";
-            request.setAttribute("error", "Debes introducir valores numéricos");
+            request.setAttribute("error", "Debes introducir valores numéricos");*/
         } catch (ExcepcionDividirPorCero ex) {
             url = "JSP/error.jsp";
             request.setAttribute("error", ex.toString());
