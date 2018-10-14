@@ -7,3 +7,5 @@ Lo que que debe hacer el proyecto es: al introducir a través de dos inputs un v
 *Commit 12/10/2018 He añadido al método doGet el error correspondiente (error al no pasar por el formulario incial de la calculadora). También he modificado el index, añadiendo la imagen lateral con un include.
 
 *Commit 13/10/2018 Las operaciones de sumar, restar y multiplicar funcionan perfectamente. El error de ir directamente al controlador (servlet) está hecho y funciona. Falta el error de dividir entre 0 y que funcione la operación.
+
+*Commit 14/10/2018 Falta el error de dividir entre 0.
