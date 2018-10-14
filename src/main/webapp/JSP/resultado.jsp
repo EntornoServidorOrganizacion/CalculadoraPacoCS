@@ -25,7 +25,7 @@
                     CalculadoraDatos cal=(CalculadoraDatos)request.getAttribute("resultado");
                 %>
 
-                <p>El resultado de la operación es: </p><br/>
+                <p>El resultado de <%=cal.getOperando1()%> <%=cal.getSignoOperacion()%> <%=cal.getOperando2()%> es: </p><br/>
                 <p><strong id="firulais"><%=cal.getResultado()%></strong></p><br/>
                 <a href="<%=request.getContextPath()%>">Menú</a>
 
